@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import hero from '../../imagenes/_MG_6869.jpg';
+import favorite from '../../imagenes/_MG_6822.jpg';
+import gathering from '../../imagenes/_MG_6727.jpg';
+import jazmin from '../../imagenes/retratos/jazmin_azul.jpg';
+import luciano from '../../imagenes/retratos/luciano_dalairac.jpg';
+import tomas from '../../imagenes/retratos/tomas_primi.jpg';
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '../styles/global.css';
+
+const people = [
+  { name: 'Jazmín Azul', role: 'Cantora', image: jazmin },
+  { name: 'Luciano Dalairac', role: 'Percusionista', image: luciano },
+  { name: 'Tomás Primi', role: 'Guitarrista', image: tomas },
+];
+---
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#171c16" />
+    <meta name="description" content="A esta hora. Música popular argentina y latinoamericana. Escuchá Canción para un niño en la calle y Desencuentro." />
+    <title>A esta hora — Música para sentir cerca</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#musica">Ir a escuchar música</a>
+    <header class="site-header">
+      <a class="wordmark" href="#inicio" aria-label="A esta hora, inicio">a esta hora<span aria-hidden="true">.</span></a>
+      <nav aria-label="Navegación principal">
+        <a href="#musica">La música</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#encuentros">Encuentros</a>
+      </nav>
+      <button class="header-listen" data-play="0"><span class="play-triangle" aria-hidden="true"></span> Escuchar</button>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-stage" aria-hidden="true">
+          <div class="ambient-light"></div>
+          <div class="window-shadow"></div>
+          <div class="hero-photo">
+            <Image src={hero} width={1440} alt="" widths={[640, 960, 1440]} sizes="(max-width: 700px) 100vw, 60vw" loading="eager" fetchpriority="high" quality={85} />
+          </div>
+          <div class="light-spill"></div>
+          <div class="grain"></div>
+        </div>
+        <div class="hero-kicker">Música popular argentina & latinoamericana</div>
+        <h1 id="hero-title"><span>A esta</span><span class="title-second">hora<span class="title-period">.</span></span></h1>
+        <div class="hero-bottom">
+          <p>Hay canciones<br />que son una forma<br /><em>de estar cerca.</em></p>
+          <a href="#musica" class="listen-link"><span class="round-play" aria-hidden="true"><span class="play-triangle"></span></span><span>Pasá, escuchá.</span></a>
+          <span class="hero-note">Voces, cuerdas<br />y un mismo pulso.</span>
+        </div>
+      </section>
+
+      <section class="music-section" id="musica" aria-labelledby="music-title">
+        <div class="section-intro reveal"><span class="eyebrow">Nuestra música</span><h2 id="music-title">Lo que nos pasa,<br /><em>hecho canción.</em></h2></div>
+        <div class="music-layout">
+          <div class="record-image reveal"><Image src={gathering} width={1200} alt="Los tres integrantes compartiendo música en casa, con guitarra y bombo" widths={[480, 800, 1200]} sizes="(max-width: 700px) 90vw, 42vw" loading="lazy" /><span class="image-note">A esta hora, en casa.</span></div>
+          <div class="tracks reveal">
+            <p class="music-copy">Canciones que abrazan. Canciones que duelen.<br />Un lugar donde encontrarnos.</p>
+            <button class="track" data-play="0" aria-label="Escuchar Canción para un niño en la calle"><span class="track-number">01</span><span class="track-title">Canción para un<br /><em>niño en la calle</em></span><span class="track-control" aria-hidden="true"><span class="play-triangle"></span></span></button>
+            <button class="track" data-play="1" aria-label="Escuchar Desencuentro"><span class="track-number">02</span><span class="track-title">Desencuentro</span><span class="track-control" aria-hidden="true"><span class="play-triangle"></span></span></button>
+            <span class="small-note">Dos canciones para quedarse un rato.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="interlude" aria-label="A esta hora, juntos">
+        <div class="interlude-sticky">
+          <Image src={favorite} width={1920} alt="Los tres integrantes de A esta hora, entre luces rojas y sombras verdes" widths={[700, 1200, 1920]} sizes="100vw" loading="lazy" quality={85} />
+          <div class="interlude-shade"></div>
+          <p>La ternura.<br /><em>Y todo lo que arde.</em></p>
+          <span class="interlude-caption">A esta hora</span>
+        </div>
+      </section>
+
+      <section class="about-section" id="nosotros" aria-labelledby="about-title">
+        <div class="about-intro reveal"><span class="eyebrow">Nosotros</span><h2 id="about-title">Tres maneras<br />de sentir.<br /><em>Un encuentro.</em></h2><p>Somos A esta hora. Hacemos música popular argentina y latinoamericana: canciones atravesadas por la ternura, la calidez y, también, el desgarro.</p></div>
+        <div class="portraits">
+          {people.map((person, index) => <article class:list={['portrait', `portrait-${index + 1}`, 'reveal']}><div class="portrait-image"><Image src={person.image} width={800} alt={`Retrato de ${person.name}`} widths={[480, 800]} sizes="(max-width: 700px) 85vw, 32vw" loading="lazy" /></div><h3>{person.name}</h3><p class="portrait-role">{person.role}</p></article>)}
+        </div>
+      </section>
+
+      <footer id="encuentros" class="site-footer">
+        <div class="contact-row reveal"><div><span class="eyebrow">Próximas fechas</span><p>Pronto, nuevos encuentros.</p></div><div><span class="eyebrow">Contacto</span><a href="mailto:aestahora@gmail.com">aestahora@gmail.com</a><a href="https://www.instagram.com/aestahora.musica/" target="_blank" rel="noopener noreferrer">Instagram · @aestahora.musica ↗</a></div></div>
+        <div class="footer-top"><span class="eyebrow">Nos volvemos a encontrar</span><a href="#musica" class="footer-invitation">Quedate con<br /><em>una canción.</em><span aria-hidden="true">↗</span></a></div>
+        <div class="footer-bottom"><a href="#inicio" class="wordmark">a esta hora.</a><span>Música popular argentina & latinoamericana</span><a href="#inicio">Volver al comienzo ↑</a></div>
+      </footer>
+    </main>
+
+    <aside class="audio-player" aria-label="Reproductor de música" hidden>
+      <button class="player-toggle" aria-label="Pausar"><span class="pause-symbol" aria-hidden="true"></span></button>
+      <div class="player-info"><span class="player-artist">A esta hora</span><span class="player-title">Canción para un niño en la calle</span></div>
+      <span class="player-time" aria-hidden="true">0:00</span>
+      <input class="player-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Posición de reproducción" />
+      <button class="player-next" aria-label="Escuchar la siguiente canción">↗</button>
+      <button class="player-close" aria-label="Cerrar y detener reproductor">×</button>
+      <span class="player-status" role="status" aria-live="polite"></span>
+    </aside>
+    <script src="../scripts/experience.ts"></script>
+  </body>
+</html>
+
