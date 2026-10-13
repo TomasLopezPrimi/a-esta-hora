@@ -16,10 +16,10 @@
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.5",
     "@fontsource/dm-sans": "^5.2.5",
-    "astro": "^7.3.2"
+    "astro": "^7.3.8"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
+    "@astrojs/check": "^0.9.10",
     "typescript": "^5.9.3"
   }
 }

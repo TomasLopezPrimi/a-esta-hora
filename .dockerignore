@@ -1,0 +1,15 @@
+node_modules
+dist
+.astro
+.git
+.gitignore
+.env
+.env.*
+*.tar.gz
+docs
+design.md
+README.md
+Dockerfile
+docker-compose.yml
+npm-debug.log*
+pnpm-debug.log*
