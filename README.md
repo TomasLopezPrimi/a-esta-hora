@@ -6,4 +6,6 @@ Seguilos en [Instagram · @aestahora.musica](https://www.instagram.com/aestahora
 
 Este sitio fue creado utilizando únicamente Codex.
 
+Diseño y desarrollo por Tomas Lopez Primi · [Appteck](https://appteck.com.ar/).
+
 Si te gustó el diseño, dejale una estrella a este repositorio. ★
