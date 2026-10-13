@@ -1,0 +1,77 @@
+.experience-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  color: #eadfc8;
+  opacity: 0;
+}
+.experience-cursor.is-visible { opacity: 1; }
+.experience-cursor.is-light { color: #273525; }
+.cursor-dot, .cursor-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+.cursor-dot::before {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring::before {
+  content: '';
+  position: absolute;
+  width: 29px;
+  height: 29px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: .6;
+  transform: translate(-50%, -50%);
+  transition: width .2s ease, height .2s ease, opacity .2s ease;
+}
+.is-link .cursor-ring::before { width: 43px; height: 43px; opacity: .85; }
+.is-playback .cursor-ring::before { width: 49px; height: 49px; }
+.is-playback .cursor-dot::before { opacity: 0; }
+.cursor-symbol {
+  position: absolute;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+.is-playback .cursor-symbol {
+  opacity: 1;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid currentColor;
+}
+.is-playback.is-paused-symbol .cursor-symbol {
+  width: 10px;
+  height: 12px;
+  margin-left: 0;
+  border: 0;
+  border-left: 3px solid currentColor;
+  border-right: 3px solid currentColor;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.custom-cursor, html.custom-cursor * { cursor: none !important; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .audio-player:not([hidden]) {
+    animation: player-enter .32s cubic-bezier(.2, .7, .3, 1) both;
+  }
+}
+@keyframes player-enter {
+  from { opacity: 0; transform: translate(-50%, 14px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .experience-cursor { display: none; }
+}

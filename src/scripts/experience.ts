@@ -1,4 +1,7 @@
-export {};
+import { initCursor } from './cursor';
+import '../styles/experience.css';
+
+const refreshCursor = initCursor();
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const hero = document.querySelector<HTMLElement>('.hero');
@@ -63,6 +66,7 @@ function syncPlayback() {
     button.setAttribute('aria-label', `${index === current && playing ? 'Pausar' : 'Escuchar'} ${songs[index].title}`);
   });
   if ('mediaSession' in navigator) navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
+  refreshCursor();
 }
 
 async function play(index: number) {

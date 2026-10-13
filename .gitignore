@@ -3,3 +3,5 @@ dist/
 .astro/
 .env
 *.tar.gz
+docs/
+design.md
