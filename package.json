@@ -16,7 +16,8 @@
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.5",
     "@fontsource/dm-sans": "^5.2.5",
-    "astro": "^7.3.8"
+    "astro": "^7.3.8",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
